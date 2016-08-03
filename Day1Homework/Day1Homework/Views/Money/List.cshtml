@@ -6,26 +6,33 @@
             #
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Money)
+            @Html.DisplayNameFor(model => model.Category)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Money)
         </th>
     </tr>
 
-@foreach (var item in Model) {
+@{ 
+    var index = 1;
+}
+
+@foreach (var item in Model.OrderBy(p => p.Date)) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Money)
+            @(index++)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.Money)
         </td>
     </tr>
 }

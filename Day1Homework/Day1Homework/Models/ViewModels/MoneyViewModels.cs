@@ -18,8 +18,10 @@ namespace Day1Homework.Models.ViewModels
         [DisplayName("類別")]
         public MoneyCategory Category { get; set; }
         [DisplayName("金額")]
+        [DataType("Money")]
         public decimal Money { get; set; }
         [DisplayName("日期")]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         [DisplayName("備註")]
         [DataType(DataType.MultilineText)]
