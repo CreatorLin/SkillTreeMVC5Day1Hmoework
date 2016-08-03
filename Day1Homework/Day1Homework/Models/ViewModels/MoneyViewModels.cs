@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +22,7 @@ namespace Day1Homework.Models.ViewModels
         [DisplayName("日期")]
         public string Date { get; set; }
         [DisplayName("備註")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
     }
 }
