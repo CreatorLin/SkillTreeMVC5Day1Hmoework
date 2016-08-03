@@ -20,7 +20,7 @@ namespace Day1Homework.Models.ViewModels
         [DisplayName("金額")]
         public decimal Money { get; set; }
         [DisplayName("日期")]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         [DisplayName("備註")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }

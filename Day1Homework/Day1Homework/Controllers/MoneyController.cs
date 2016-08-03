@@ -16,7 +16,7 @@ namespace Day1Homework.Controllers
         [ChildActionOnly]
         public ActionResult List()
         {
-            return PartialView(new List<Models.ViewModels.MoneyViewModel>());
+            return PartialView(SampleData.MoneySampleData.Get());
         }
     }
 }
