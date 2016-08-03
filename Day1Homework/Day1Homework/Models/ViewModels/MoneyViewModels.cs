@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -13,9 +14,13 @@ namespace Day1Homework.Models.ViewModels
 
     public class MoneyViewModel
     {
+        [DisplayName("類別")]
         public MoneyCategory Category { get; set; }
+        [DisplayName("金額")]
         public decimal Money { get; set; }
+        [DisplayName("日期")]
         public string Date { get; set; }
+        [DisplayName("備註")]
         public string Description { get; set; }
     }
 }
