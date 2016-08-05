@@ -13,6 +13,12 @@ namespace Day1Homework.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Create()
+        {
+            return RedirectToAction("Index");
+        }
+
         [ChildActionOnly]
         public ActionResult List()
         {

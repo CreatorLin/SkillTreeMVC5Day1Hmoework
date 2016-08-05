@@ -201,6 +201,7 @@
     <Content Include="Views\Money\List.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Money.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Money\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
