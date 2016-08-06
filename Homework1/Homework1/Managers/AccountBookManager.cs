@@ -1,4 +1,5 @@
 ﻿using Homework1.Models;
+using Homework1.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +9,21 @@ namespace Homework1.Managers
 {
     public class AccountBookManager
     {
-        private MyEntity db;
+        private IStore<AccountBook> store;
 
-        public AccountBookManager(MyEntity dbContext)
+        public AccountBookManager(IStore<AccountBook> store)
         {
-            db = dbContext;
+            this.store = store;
         }
 
         public IQueryable<AccountBook> Lookup()
         {
-            return db.AccountBooks;
+            return store.LookupAll();
         }
 
         public void Save()
         {
-            db.SaveChanges();
+            store.Save();
         }
     }
 }

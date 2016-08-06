@@ -169,6 +169,8 @@
     <Compile Include="Models\ViewModels\MoneyViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleData\MoneySampleData.cs" />
+    <Compile Include="Stores\IStore.cs" />
+    <Compile Include="Stores\Store.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SkillTreeHomework.mdf" />

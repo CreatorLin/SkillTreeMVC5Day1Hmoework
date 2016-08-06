@@ -1,6 +1,7 @@
 ﻿using Homework1.Managers;
 using Homework1.Models;
 using Homework1.Models.ViewModels;
+using Homework1.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,9 @@ namespace Homework1.Controllers
         public MoneyController()
         {
             var dbContext = new MyEntity();
+            var store = new Store<AccountBook>(dbContext);
 
-            manager = new AccountBookManager(dbContext);
+            manager = new AccountBookManager(store);
         }
 
         public ActionResult Index()
