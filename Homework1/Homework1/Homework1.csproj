@@ -163,6 +163,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\AccountBookManager.cs" />
     <Compile Include="Models\AccountBook.cs" />
     <Compile Include="Models\MyEntity.cs" />
     <Compile Include="Models\ViewModels\MoneyViewModels.cs" />
