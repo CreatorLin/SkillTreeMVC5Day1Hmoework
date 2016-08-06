@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Homework1.Managers;
+using Homework1.Models;
+using Homework1.Models.ViewModels;
+using Homework1.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +12,16 @@ namespace Homework1.Controllers
 {
     public class MoneyController : Controller
     {
+        private AccountBookManager manager;
+
+        public MoneyController()
+        {
+            var dbContext = new MyEntity();
+            var store = new Store<AccountBook>(dbContext);
+
+            manager = new AccountBookManager(store);
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -22,7 +36,14 @@ namespace Homework1.Controllers
         [ChildActionOnly]
         public ActionResult List()
         {
-            return PartialView(SampleData.MoneySampleData.Get());
+            var viewData = manager.Lookup().Select(p => new MoneyViewModel()
+            {
+                Category = (MoneyCategory)p.Categoryyy,
+                Money = p.Amounttt,
+                Date = p.Dateee
+            }).ToList();
+            
+            return PartialView(viewData);
         }
     }
 }

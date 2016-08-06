@@ -4,17 +4,18 @@
     ViewBag.Title = "我的記賬本";
 }
 
-<hr />
-
 <div class="well">
     @{
         Html.RenderPartial("Create");
     }
 </div>
 
-@Html.Action("List")
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("List")
+    </div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-

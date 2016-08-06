@@ -9,7 +9,7 @@ namespace Homework1.Models.ViewModels
 {
     public enum MoneyCategory
     {
-        收入 = 1,
+        收入,
         支出
     }
 
