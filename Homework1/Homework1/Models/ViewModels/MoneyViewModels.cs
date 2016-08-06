@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Day1Homework.Models.ViewModels
+namespace Homework1.Models.ViewModels
 {
     public enum MoneyCategory
     {

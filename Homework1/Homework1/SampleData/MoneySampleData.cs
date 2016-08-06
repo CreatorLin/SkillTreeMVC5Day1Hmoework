@@ -1,10 +1,10 @@
-﻿using Day1Homework.Models.ViewModels;
+﻿using Homework1.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Day1Homework.SampleData
+namespace Homework1.SampleData
 {
     public class MoneySampleData
     {

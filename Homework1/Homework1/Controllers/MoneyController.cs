@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Day1Homework.Controllers
+namespace Homework1.Controllers
 {
     public class MoneyController : Controller
     {
