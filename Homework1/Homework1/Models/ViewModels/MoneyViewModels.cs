@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Homework1.Models.ViewModels
 {
@@ -24,6 +25,7 @@ namespace Homework1.Models.ViewModels
 
         [DisplayName("日期")]
         [DataType(DataType.Date)]
+        [RemoteDoublePlus("GreaterThanToday", "Validate", "", ErrorMessage = "「日期」不得大於今天")]
         public DateTime Date { get; set; }
 
         [DisplayName("備註")]
