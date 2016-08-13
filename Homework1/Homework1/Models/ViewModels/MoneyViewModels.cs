@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Homework1.Models.ViewModels
 {
@@ -19,8 +16,9 @@ namespace Homework1.Models.ViewModels
     {
         [DisplayName("類別")]
         public MoneyCategory Category { get; set; }
-        [DisplayName("金額")]
         [DataType("Money")]
+        [DisplayName("金額")]
+        [Range(1, Int32.MaxValue)]
         public decimal Money { get; set; }
         [DisplayName("日期")]
         [DataType(DataType.Date)]
