@@ -28,6 +28,7 @@ namespace Homework1.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(MoneyViewModel pageData)
         {
             if (!ModelState.IsValid)
