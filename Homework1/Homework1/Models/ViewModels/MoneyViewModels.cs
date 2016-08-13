@@ -9,8 +9,10 @@ namespace Homework1.Models.ViewModels
 {
     public enum MoneyCategory
     {
-        收入,
-        支出
+        [Display(Name ="收入")]
+        Income,
+        [Display(Name = "支出")]
+        Expenses
     }
 
     public class MoneyViewModel
