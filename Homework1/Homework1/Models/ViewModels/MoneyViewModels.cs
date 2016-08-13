@@ -16,6 +16,7 @@ namespace Homework1.Models.ViewModels
     public class MoneyViewModel
     {
         [DisplayName("類別")]
+        [EnumDataType(typeof(MoneyCategory))]
         public MoneyCategory Category { get; set; }
 
         [DataType("Money")]
@@ -28,6 +29,7 @@ namespace Homework1.Models.ViewModels
         [RemoteDoublePlus("GreaterThanToday", "Validate", "", ErrorMessage = "「日期」不得大於今天")]
         public DateTime Date { get; set; }
 
+        [Required]
         [DisplayName("備註")]
         [DataType(DataType.MultilineText)]
         [StringLength(100)]
