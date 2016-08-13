@@ -16,15 +16,19 @@ namespace Homework1.Models.ViewModels
     {
         [DisplayName("類別")]
         public MoneyCategory Category { get; set; }
+
         [DataType("Money")]
         [DisplayName("金額")]
         [Range(1, Int32.MaxValue)]
         public decimal Money { get; set; }
+
         [DisplayName("日期")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
+
         [DisplayName("備註")]
         [DataType(DataType.MultilineText)]
+        [StringLength(100)]
         public string Description { get; set; }
     }
 }
