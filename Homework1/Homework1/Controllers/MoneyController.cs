@@ -28,8 +28,23 @@ namespace Homework1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create()
+        public ActionResult Create(MoneyViewModel pageData)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+
+            var model = new AccountBook()
+            {
+                Dateee = pageData.Date,
+                Amounttt = (int)pageData.Money,
+                Categoryyy = (int)pageData.Category,
+                Remarkkk = pageData.Description
+            };
+
+            manager.Add(model);
+
             return RedirectToAction("Index");
         }
 
