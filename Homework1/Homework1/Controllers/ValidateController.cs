@@ -8,9 +8,9 @@ namespace Homework1.Controllers
 {
     public class ValidateController : Controller
     {
-        public JsonResult GreaterThanToday(DateTime pageData)
+        public JsonResult GreaterThanToday(DateTime date)
         {
-            bool greaterThanToday = pageData > DateTime.Today;
+            bool greaterThanToday = date > DateTime.Today;
 
             return Json(!greaterThanToday, JsonRequestBehavior.AllowGet);
         }
