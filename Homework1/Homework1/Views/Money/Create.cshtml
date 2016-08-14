@@ -1,6 +1,10 @@
 ﻿@model Homework1.Models.ViewModels.MoneyViewModel
 
-@using (Html.BeginForm("Create", null))
+@using (Ajax.BeginForm("Create", new AjaxOptions()
+{
+    Url = Url.Action("AJAXCreate"),
+    UpdateTargetId = "listdiv"
+}))
 {
     @Html.AntiForgeryToken()
 

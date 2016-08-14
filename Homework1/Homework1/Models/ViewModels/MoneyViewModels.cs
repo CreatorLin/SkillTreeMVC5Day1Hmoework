@@ -1,30 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 
 namespace Homework1.Models.ViewModels
 {
     public enum MoneyCategory
     {
-        收入,
-        支出
+        [Display(Name ="收入")]
+        Income,
+        [Display(Name = "支出")]
+        Expenses
     }
 
     public class MoneyViewModel
     {
         [DisplayName("類別")]
+        [EnumDataType(typeof(MoneyCategory))]
         public MoneyCategory Category { get; set; }
-        [DisplayName("金額")]
+
         [DataType("Money")]
+        [DisplayName("金額")]
+        [Range(1, Int32.MaxValue)]
         public decimal Money { get; set; }
+
         [DisplayName("日期")]
         [DataType(DataType.Date)]
+        [RemoteDoublePlus("GreaterThanToday", "Validate", "", ErrorMessage = "「日期」不得大於今天")]
         public DateTime Date { get; set; }
+
+        [Required]
         [DisplayName("備註")]
         [DataType(DataType.MultilineText)]
+        [StringLength(100)]
         public string Description { get; set; }
     }
 }

@@ -11,9 +11,23 @@ namespace Homework1.Managers
     {
         private IStore<AccountBook> store;
 
+        public bool AutoSave { get; set; } = true;
+
         public AccountBookManager(IStore<AccountBook> store)
         {
             this.store = store;
+        }
+
+        public void Add(AccountBook model)
+        {
+            model.Id = Guid.NewGuid();
+
+            store.Create(model);
+
+            if (AutoSave)
+            {
+                Save();
+            }
         }
 
         public IQueryable<AccountBook> Lookup()

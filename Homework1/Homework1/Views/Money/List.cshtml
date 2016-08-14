@@ -25,7 +25,7 @@
         <td>
             @(index++)
         </td>
-        <td>
+        <td class="@(item.Category == Homework1.Models.ViewModels.MoneyCategory.Income ? "text-primary" : "text-danger")">
             @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
