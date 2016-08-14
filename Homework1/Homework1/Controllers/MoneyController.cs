@@ -2,10 +2,7 @@
 using Homework1.Models;
 using Homework1.Models.ViewModels;
 using Homework1.Stores;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Homework1.Controllers
@@ -31,22 +28,24 @@ namespace Homework1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MoneyViewModel pageData)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View("Index");
+                AddToDB(pageData);
             }
 
-            var model = new AccountBook()
+            return View("Index");
+        }
+
+        public ActionResult AJAXCreate(MoneyViewModel pageData)
+        {
+            if (!ModelState.IsValid)
             {
-                Dateee = pageData.Date,
-                Amounttt = (int)pageData.Money,
-                Categoryyy = (int)pageData.Category,
-                Remarkkk = pageData.Description
-            };
+                return new HttpNotFoundResult();
+            }
 
-            manager.Add(model);
+            AddToDB(pageData);
 
-            return RedirectToAction("Index");
+            return PartialView();
         }
 
         [ChildActionOnly]
@@ -60,6 +59,19 @@ namespace Homework1.Controllers
             }).ToList();
             
             return PartialView(viewData);
+        }
+
+        private void AddToDB(MoneyViewModel pageData)
+        {
+            var model = new AccountBook()
+            {
+                Dateee = pageData.Date,
+                Amounttt = (int)pageData.Money,
+                Categoryyy = (int)pageData.Category,
+                Remarkkk = pageData.Description
+            };
+
+            manager.Add(model);
         }
     }
 }

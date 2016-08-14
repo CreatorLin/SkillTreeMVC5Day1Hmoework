@@ -237,6 +237,7 @@
     <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
     <Content Include="Views\Money\Create.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Money\AJAXCreate.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
