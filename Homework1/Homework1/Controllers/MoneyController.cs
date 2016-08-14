@@ -36,6 +36,7 @@ namespace Homework1.Controllers
             return View("Index");
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult AJAXCreate(MoneyViewModel pageData)
         {
             if (!ModelState.IsValid)
