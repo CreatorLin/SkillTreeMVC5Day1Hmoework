@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 
 namespace Homework1.Models.ViewModels
 {
@@ -24,9 +23,8 @@ namespace Homework1.Models.ViewModels
         [Range(1, Int32.MaxValue)]
         public decimal Money { get; set; }
 
+        [EndDate]
         [DisplayName("日期")]
-        [DataType(DataType.Date)]
-        [RemoteDoublePlus("GreaterThanToday", "Validate", "", ErrorMessage = "「日期」不得大於今天")]
         public DateTime Date { get; set; }
 
         [Required]
