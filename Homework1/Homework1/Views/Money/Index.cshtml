@@ -17,8 +17,9 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryuno")
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+
     <link href="@Url.Content("~/Content/bootstrap-datetimepicker.css")" rel="stylesheet" />
     <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.unobtrusive.js")"></script>
