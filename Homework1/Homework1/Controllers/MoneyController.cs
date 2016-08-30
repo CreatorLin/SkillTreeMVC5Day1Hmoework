@@ -12,10 +12,11 @@ namespace Homework1.Controllers
     {
         private const string LIST_KEY = "MoneyList";
         private AccountBookManager manager;
+        private MyEntity dbContext; 
 
         public MoneyController()
         {
-            var dbContext = new MyEntity();
+            dbContext = new MyEntity();
             var store = new Store<AccountBook>(dbContext);
 
             manager = new AccountBookManager(store);
@@ -32,8 +33,7 @@ namespace Homework1.Controllers
         {
             if (ModelState.IsValid)
             {
-                AddToDB(pageData);
-                CleanCache();
+                CommonCreate(pageData);
             }
 
             return View("Index");
@@ -48,8 +48,7 @@ namespace Homework1.Controllers
                 return new HttpNotFoundResult();
             }
 
-            AddToDB(pageData);
-            CleanCache();
+            CommonCreate(pageData);
 
             return PartialView();
         }
@@ -71,6 +70,13 @@ namespace Homework1.Controllers
             }
             
             return PartialView(viewData);
+        }
+
+        private void CommonCreate(MoneyViewModel data)
+        {
+            AddToDB(data);
+            dbContext.SaveChanges();
+            CleanCache();
         }
 
         private void AddToDB(MoneyViewModel pageData)

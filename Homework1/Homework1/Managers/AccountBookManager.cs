@@ -11,7 +11,7 @@ namespace Homework1.Managers
     {
         private IStore<AccountBook> store;
 
-        public bool AutoSave { get; set; } = true;
+        public bool AutoSave { get; set; } = false;
 
         public AccountBookManager(IStore<AccountBook> store)
         {
