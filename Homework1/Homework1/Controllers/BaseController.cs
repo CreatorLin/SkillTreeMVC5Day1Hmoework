@@ -1,6 +1,7 @@
 ﻿using Homework1.Managers;
 using Homework1.Models;
 using Homework1.Stores;
+using System.ServiceModel.Syndication;
 using System.Web.Mvc;
 
 namespace Homework1.Controllers
@@ -23,6 +24,11 @@ namespace Homework1.Controllers
         public BaseController()
         {
             dbContext = new MyEntity();
+        }
+
+        public RssResult Rss(SyndicationFeed feed)
+        {
+            return new RssResult(feed);
         }
     }
 }
