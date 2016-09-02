@@ -8,17 +8,14 @@ using System.Web.Mvc;
 
 namespace Homework1.Controllers
 {
-    public class MoneyController : Controller
+    public class MoneyController : BaseController
     {
         private const string LIST_KEY = "MoneyList";
         private AccountBookManager manager;
-        private MyEntity dbContext; 
 
         public MoneyController()
         {
-            dbContext = new MyEntity();
             var store = new Store<AccountBook>(dbContext);
-
             manager = new AccountBookManager(store);
         }
 
