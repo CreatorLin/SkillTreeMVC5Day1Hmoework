@@ -6,7 +6,8 @@
       "Scripts/jquery.validate.unobtrusive.js",
       "Scripts/jquery.unobtrusive-ajax.js",
       "Scripts/bootstrap-datetimepicker.js",
-      "Scripts/bootstrap-datetimepicker.unobtrusive.js"
+      "Scripts/bootstrap-datetimepicker.unobtrusive.js",
+      "Scripts/Increment.js"
     ]
   },
   {
