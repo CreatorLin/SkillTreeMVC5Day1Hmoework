@@ -8,7 +8,7 @@ namespace Homework1.Controllers
 {
     public class BaseController : Controller
     {
-        protected MyEntity dbContext;
+        protected MyDbContext dbContext;
         protected AccountBookManager _accountBookManager;
         protected AccountBookManager AccountBookManager {
             get {
@@ -23,7 +23,7 @@ namespace Homework1.Controllers
 
         public BaseController()
         {
-            dbContext = new MyEntity();
+            dbContext = new MyDbContext();
         }
 
         public RssResult Rss(SyndicationFeed feed)
