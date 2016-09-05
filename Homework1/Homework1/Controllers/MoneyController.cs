@@ -59,11 +59,12 @@ namespace Homework1.Controllers
             {
                 viewData = manager.Lookup().Select(p => new MoneyViewModel()
                 {
+                    Id = p.Id,
                     Category = (MoneyCategory)p.Categoryyy,
                     Money = p.Amounttt,
                     Date = p.Dateee
                 }).ToList();
-                WebCache.Set(LIST_KEY, viewData);
+                WebCache.Set(LIST_KEY, viewData, 1);
             }
             
             return PartialView(viewData);

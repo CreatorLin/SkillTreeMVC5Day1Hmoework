@@ -22,5 +22,5 @@
     }
 }
 
-@Html.TextBox("", Model, htmlAttributes)
+@Html.TextBox("", Model?.ToString(dateTimeFormat), htmlAttributes)
 

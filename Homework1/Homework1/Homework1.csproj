@@ -285,6 +285,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Power\Views\web.config" />
     <Content Include="Areas\Power\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Power\Views\AccountBook\List.cshtml" />
+    <Content Include="Areas\Power\Views\AccountBook\Edit.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Scripts\Increment.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -341,6 +343,7 @@
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Money\_Common.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Increment.ts" />
@@ -355,7 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Power\Models\" />
-    <Folder Include="Areas\Power\Views\AccountBook\" />
     <Folder Include="Areas\Power\Views\Shared\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Base\" />

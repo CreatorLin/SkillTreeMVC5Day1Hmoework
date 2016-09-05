@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Homework1.Models.ViewModels
 {
@@ -14,6 +15,9 @@ namespace Homework1.Models.ViewModels
 
     public class MoneyViewModel
     {
+        [HiddenInput]
+        public Guid Id { get; set; }
+
         [DisplayName("類別")]
         [EnumDataType(typeof(MoneyCategory))]
         public MoneyCategory Category { get; set; }
