@@ -1,0 +1,9 @@
+﻿@model object
+
+@{ 
+    var htmlAttributes =  HtmlHelper.AnonymousObjectToHtmlAttributes(ViewData["htmlAttributes"]);
+    htmlAttributes.Add("type", "number");
+}
+
+@Html.TextBox("", Model, htmlAttributes)
+

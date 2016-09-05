@@ -1,0 +1,52 @@
+﻿@model Homework1.Models.ViewModels.MoneyViewModel
+
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Category, "請選擇", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Money, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="input-group">
+                @Html.EditorFor(model => model.Money, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(model => model.Money) } })
+                @Html.ValidationMessageFor(model => model.Money, "", new { @class = "text-danger" })
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" data-increment="@Html.NameFor(model => model.Money)" data-increment-num="1" type="button">+</button>
+                    <button class="btn btn-danger" data-increment="@Html.NameFor(model => model.Money)" data-increment-num="-1" type="button">-</button>
+                </span>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(model => model.Date) } })
+            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-8 col-sm-4">
+            <button type="submit" class="btn btn-default">送出</button>
+        </div>
+    </div>
+</div>

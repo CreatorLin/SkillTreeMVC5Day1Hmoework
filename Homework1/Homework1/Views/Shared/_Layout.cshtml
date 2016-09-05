@@ -8,6 +8,7 @@
     <!--@Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")-->
     <link href="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/App.css")" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,6 +27,8 @@
                     <li><a href="#">關於</a>
                     <li><a href="#">連絡方式</a>
                 </ul>
+
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
@@ -42,6 +45,7 @@
     @Scripts.Render("~/bundles/bootstrap")-->
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"></script>
-    @RenderSection("scripts", required: false)
+    <script src="@Url.Content("~/Scripts/App.js")"></script>
+    @RenderSection("Scripts", false)
 </body>
 </html>

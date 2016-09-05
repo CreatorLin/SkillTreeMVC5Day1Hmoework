@@ -15,6 +15,9 @@ namespace Homework1.Models.ViewModels
 
     public class MoneyViewModel
     {
+        [HiddenInput]
+        public Guid Id { get; set; }
+
         [DisplayName("類別")]
         [EnumDataType(typeof(MoneyCategory))]
         public MoneyCategory Category { get; set; }
@@ -24,9 +27,8 @@ namespace Homework1.Models.ViewModels
         [Range(1, Int32.MaxValue)]
         public decimal Money { get; set; }
 
+        [EndDate]
         [DisplayName("日期")]
-        [DataType(DataType.Date)]
-        [RemoteDoublePlus("GreaterThanToday", "Validate", "", ErrorMessage = "「日期」不得大於今天")]
         public DateTime Date { get; set; }
 
         [Required]

@@ -2,22 +2,23 @@
 using Homework1.Models;
 using Homework1.Models.ViewModels;
 using Homework1.Stores;
+using PagedList;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Homework1.Controllers
 {
-    public class MoneyController : Controller
+    public class MoneyController : BaseController
     {
         private const string LIST_KEY = "MoneyList";
         private AccountBookManager manager;
 
         public MoneyController()
         {
-            var dbContext = new MyEntity();
             var store = new Store<AccountBook>(dbContext);
-
             manager = new AccountBookManager(store);
         }
 
@@ -32,13 +33,13 @@ namespace Homework1.Controllers
         {
             if (ModelState.IsValid)
             {
-                AddToDB(pageData);
-                CleanCache();
+                CommonCreate(pageData);
             }
 
             return View("Index");
         }
 
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AJAXCreate(MoneyViewModel pageData)
         {
@@ -47,29 +48,44 @@ namespace Homework1.Controllers
                 return new HttpNotFoundResult();
             }
 
-            AddToDB(pageData);
-            CleanCache();
+            CommonCreate(pageData);
 
             return PartialView();
         }
 
         [ChildActionOnly]
-        public ActionResult List()
+        public ActionResult List(int? year, int? month, int? page)
         {
-            var viewData = WebCache.Get(LIST_KEY);
+            var dbData = WebCache.Get(LIST_KEY);
             
-            if (viewData == null)
+            if (dbData == null)
             {
-                viewData = manager.Lookup().Select(p => new MoneyViewModel()
+                dbData = manager.Lookup().Select(p => new MoneyViewModel()
                 {
+                    Id = p.Id,
                     Category = (MoneyCategory)p.Categoryyy,
                     Money = p.Amounttt,
                     Date = p.Dateee
-                }).ToList();
-                WebCache.Set(LIST_KEY, viewData);
+                }).ToList().OrderBy(p => p.Date);
+                WebCache.Set(LIST_KEY, dbData, 1);
             }
-            
-            return PartialView(viewData);
+
+            var pageNumber = page ?? 1;
+            var pageData = (dbData as IEnumerable<MoneyViewModel>);
+
+            if(year.HasValue && month.HasValue)
+            {
+                pageData = pageData.Where(p => p.Date.Year == year && p.Date.Month == month);
+            }
+
+            return PartialView(pageData.ToPagedList(pageNumber, 10));
+        }
+
+        private void CommonCreate(MoneyViewModel data)
+        {
+            AddToDB(data);
+            dbContext.SaveChanges();
+            CleanCache();
         }
 
         private void AddToDB(MoneyViewModel pageData)

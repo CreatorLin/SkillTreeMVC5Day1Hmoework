@@ -1,0 +1,26 @@
+﻿@model DateTime?
+
+@{ 
+    var pickerFormat = "yyyy-mm-dd";
+    var dateTimeFormat = "yyyy-MM-dd";
+
+    var htmlAttributes =  HtmlHelper.AnonymousObjectToHtmlAttributes(ViewData["htmlAttributes"]);
+    htmlAttributes.Add("data-datetimepicker", "");
+    htmlAttributes.Add("data-date-autoclose", "true");
+    htmlAttributes.Add("data-min-view", "3");
+    htmlAttributes.Add("data-date-format", pickerFormat);
+
+    if(ViewData.ModelMetadata.GetValidators(ViewContext)
+        .Any(p => p.GetClientValidationRules()
+        .Any(a => a.ValidationType == "enddate" && a.ValidationParameters.ContainsKey("date"))))
+    {
+        var year = (int)ViewData.ModelMetadata.AdditionalValues["endDateYear"];
+        var month = (int)ViewData.ModelMetadata.AdditionalValues["endDateMonth"];
+        var day = (int)ViewData.ModelMetadata.AdditionalValues["endDateDay"];
+
+        htmlAttributes.Add("data-date-enddate", new DateTime(year, month, day).ToString(dateTimeFormat));
+    }
+}
+
+@Html.TextBox("", Model?.ToString(dateTimeFormat), htmlAttributes)
+

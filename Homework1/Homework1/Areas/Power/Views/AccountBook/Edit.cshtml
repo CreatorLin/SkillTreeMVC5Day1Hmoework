@@ -1,0 +1,12 @@
+﻿@model Homework1.Models.ViewModels.MoneyViewModel
+
+<h2>編輯</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("~/Views/Money/_Common.cshtml")
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Money", new { Area = string.Empty }, null)
+</div>
