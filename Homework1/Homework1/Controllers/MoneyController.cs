@@ -54,7 +54,7 @@ namespace Homework1.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult List(int? page)
+        public ActionResult List(int? year, int? month, int? page)
         {
             var dbData = WebCache.Get(LIST_KEY);
             
@@ -71,9 +71,14 @@ namespace Homework1.Controllers
             }
 
             var pageNumber = page ?? 1;
-            var pageData = (dbData as IEnumerable<MoneyViewModel>).ToPagedList(pageNumber, 10);
+            var pageData = (dbData as IEnumerable<MoneyViewModel>);
 
-            return PartialView(pageData);
+            if(year.HasValue && month.HasValue)
+            {
+                pageData = pageData.Where(p => p.Date.Year == year && p.Date.Month == month);
+            }
+
+            return PartialView(pageData.ToPagedList(pageNumber, 10));
         }
 
         private void CommonCreate(MoneyViewModel data)

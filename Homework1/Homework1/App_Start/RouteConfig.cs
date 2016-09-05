@@ -15,8 +15,8 @@ namespace Homework1
 
             routes.MapRoute(
                 name: "SkillTree",
-                url: "skillTree",
-                defaults: new { controller = "Money", action = "Index", id = UrlParameter.Optional }
+                url: "skillTree/{year}/{month}",
+                defaults: new { controller = "Money", action = "Index", year = UrlParameter.Optional, month = UrlParameter.Optional }
             );
 
             routes.MapRoute(
