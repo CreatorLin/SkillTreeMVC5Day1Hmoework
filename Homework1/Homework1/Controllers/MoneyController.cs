@@ -2,6 +2,9 @@
 using Homework1.Models;
 using Homework1.Models.ViewModels;
 using Homework1.Stores;
+using PagedList;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -51,23 +54,26 @@ namespace Homework1.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult List()
+        public ActionResult List(int? page)
         {
-            var viewData = WebCache.Get(LIST_KEY);
+            var dbData = WebCache.Get(LIST_KEY);
             
-            if (viewData == null)
+            if (dbData == null)
             {
-                viewData = manager.Lookup().Select(p => new MoneyViewModel()
+                dbData = manager.Lookup().Select(p => new MoneyViewModel()
                 {
                     Id = p.Id,
                     Category = (MoneyCategory)p.Categoryyy,
                     Money = p.Amounttt,
                     Date = p.Dateee
-                }).ToList();
-                WebCache.Set(LIST_KEY, viewData, 1);
+                }).ToList().OrderBy(p => p.Date);
+                WebCache.Set(LIST_KEY, dbData, 1);
             }
-            
-            return PartialView(viewData);
+
+            var pageNumber = page ?? 1;
+            var pageData = (dbData as IEnumerable<MoneyViewModel>).ToPagedList(pageNumber, 10);
+
+            return PartialView(pageData);
         }
 
         private void CommonCreate(MoneyViewModel data)

@@ -13,7 +13,8 @@
   {
     "outputFileName": "Content/App.css",
     "inputFiles": [
-      "Content/bootstrap-datetimepicker.css"
+      "Content/bootstrap-datetimepicker.css",
+      "/Content/PagedList.css"
     ]
   }
 ]
